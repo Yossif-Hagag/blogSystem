@@ -29,13 +29,13 @@ class AdminController extends Controller
         foreach ($users as $user) {$u++;}
         foreach ($categories as $category) {$c++;}
 
-        return view('admin',['a' => $a, 'pa' => $pa, 'upa' => $upa,'u' => $u, 'c' => $c]);
+        return view('admin/admin',['a' => $a, 'pa' => $pa, 'upa' => $upa,'u' => $u, 'c' => $c]);
     }
 
     public function addArticle()
     {
         $categories = Category::all();
-        return view('addArticle',compact('categories'));
+        return view('admin/addArticle',compact('categories'));
     }
     
     public function storeArticle(Request $request)
@@ -68,7 +68,7 @@ class AdminController extends Controller
     public function viewArticles()
     {
         $articles = Article::orderby('id' ,'desc')->paginate(5);
-        return view('viewArticles', ['articles' => $articles]);
+        return view('admin/viewArticles', ['articles' => $articles]);
     }
 
     public function publishArticle($id)
@@ -95,7 +95,7 @@ class AdminController extends Controller
     public function updateArticle($id){
         $article = Article::findOrFail($id);
         $categories = Category::all();
-        return view('updateArticle', compact('article'), compact('categories'));
+        return view('admin/updateArticle', compact('article'), compact('categories'));
     }
 
     public function saveArticle($id)

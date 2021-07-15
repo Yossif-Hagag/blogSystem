@@ -89,7 +89,7 @@
         <a class="nav-link" href="{{ url('/admin') }}"> Dashboard </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/addArticle') }}"> Add Article </a>
+        <a class="nav-link" href="{{ url('/updateArticle',$article->id) }}"> Update Article </a>
     </li>
 @endsection
 @section('content')

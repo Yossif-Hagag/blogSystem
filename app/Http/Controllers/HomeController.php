@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $articles = Article::where('published', 1)->orderby('id' ,'desc')->paginate(5);
-        return view('home', ['categories' => $categories, 'articles' => $articles]);
+        return view('user/home', ['categories' => $categories, 'articles' => $articles]);
     }
 
     public function filterArticle(Request $request)
@@ -40,14 +40,14 @@ class HomeController extends Controller
         }else{
             $articles = Article::where('published', 1)->where('category_id', $request->category)->orderby('id' ,'desc')->paginate(5);
         }
-        return view('home', ['categories' => $categories, 'articles' => $articles]);
+        return view('user/home', ['categories' => $categories, 'articles' => $articles]);
     }
 
     public function commentsForPost($id)
     {
         $article = Article::findOrFail($id);
         $comments = Comment::orderby('id' ,'desc')->get();
-        return view('commentsForPost', ['article' => $article, 'comments' => $comments]);
+        return view('user/commentsForPost', ['article' => $article, 'comments' => $comments]);
     }
 
 
